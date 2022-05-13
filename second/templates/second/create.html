@@ -1,0 +1,9 @@
+<form action="{%url 'create'%}" method="post">
+  {%csrf_token%}
+  <!--입력 요청에 대해 각각의 유니크한 입력폼 토큰값 발행
+    유효한 요청인지 검증-->
+  <table>
+    {{form.as_table}}
+  </table>
+  <button type="submit">제출</button>
+</form>

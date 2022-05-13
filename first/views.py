@@ -7,6 +7,8 @@ from django.http import HttpResponse
 from django.template import loader
 from datetime import date, datetime
 
+import random
+
 # 데이터를 꺼내와 화면에 나타내고 싶은 것들의 로직
 def index(request):
     now = datetime.now()
@@ -17,10 +19,29 @@ def index(request):
 
 
 def select(request):
-    context={'number' : 4}
+    context={}
     return render(request, 'first/select.html', context)
 
 
 def result(request):
-    context={'numbers' : [1, 2, 3, 4, 5, 6]}
+    chosen = int(request.GET['number']) #get으로 받아오는 값은 str
+
+    results=[]
+    if chosen >= 1 and chosen <= 45:
+        result.append(chosen)
+    
+    box = []
+    for i in range(0, 45):
+        if chosen != i+1:
+            box.append(i+1)
+
+    random.shuffle(box)
+
+    while len(results) < 6:
+        results.append(box.pop())
+
+    context = {
+        'numbers': results
+    }
+    
     return render(request, 'first/result.html', context)
