@@ -1,0 +1,21 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <p>Hello World!</p>
+
+    <img
+      style="width: 80px"
+      src="{% static 'first/image.png'%}"
+      alat="다람쥐"
+    />
+    <p>{{current_date}}</p>
+    <p>{{current_date|date:"y년 mn월 d일 h시"}}</p>
+
+    <a href="{% url 'select' %}">시작하기!</a>
+  </body>
+</html>
